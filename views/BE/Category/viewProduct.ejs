@@ -1,0 +1,47 @@
+<% include ../Layout/header %>
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active"><%= title %></li>
+			</ol>
+		</div><!--/.row-->
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"><%= title %></h1>
+			</div>
+		</div><!--/.row-->
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Panel title</h3>
+			</div>
+			<div class="panel-body">
+			<div class="jumbotron">
+				<div class="container row">
+					<div class="col-sm-6">
+						<h3>Name : </h3> <%= pro.nameProduct %>
+						<h3>Price : </h3> <%= pro.price %>
+						<h3>Status : </h3>
+						 <% if(pro.status){ %> 
+						 <label class="btn-success">Hiện Thị</label> 
+						 <%}else{ %>
+						 <label class="btn-primary">Ẩn</label> 
+						 <%  } %>
+	 					<h3>Date : </h3> <%= pro.date %>
+						<h3>Description : </h3> <%= pro.description %>
+					</div>
+					<div class="col-sm-6">
+						<img src="http://localhost:3000/uploads/<%= pro.image %>" width="400">
+					</div>
+					
+				</div>
+			</div>
+			</div>
+			
+		</div>
+		
+	</div>	
+<% include ../Layout/footer %>

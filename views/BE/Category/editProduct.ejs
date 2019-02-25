@@ -1,0 +1,69 @@
+<% include ../Layout/header %>
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active"><%= title %></li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"><%= title %></h1>
+			</div>
+		</div><!--/.row-->
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Panel title</h3>
+			</div>
+			<div class="panel-body">
+					
+				<form method="post" action="/update-product/<%= pro.slug%>/<%= id%>/" >
+
+					
+					<div class="form-group">
+					    <label for="exampleInputEmail1"> Product Name</label>
+					    	<input type="text" class="form-control" name="nameProduct"  style="border: 1px solid black;" value="<%= pro.nameProduct %>">
+					   
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Product Price</label>
+					   <input type="text"  class="form-control"  name="price" style="border: 1px solid black;" value="<%= pro.price %>">
+					    
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Product Description</label>
+					  <textarea  name="description" class="form-control" rows="3" style="border: 1px solid black;" required="required"></textarea>
+					</div>
+	
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Product Images</label>
+						<input  type="file" name="image">
+					    <img src="http://localhost:3000/uploads/<%= pro.image %>"  rel="stylesheet" width="50px">
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Product Status</label>
+					    <select name="status" id="input"  class="form-control" required="required">
+					    	<% if(pro.status == 0) { %>
+								<option value="0">Show</option>
+					   		<% } %>
+					    	<option value="1">Hidden</option>
+					    </select>
+					    
+					</div>
+					
+					 <button type="submit" class="btn btn-primary btn-lg">Create</button>
+					
+				</form>
+			</div>
+			
+		</div>
+		
+	</div>	
+<% include ../Layout/footer %>

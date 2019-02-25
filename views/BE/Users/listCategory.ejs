@@ -1,0 +1,41 @@
+<% include ../Layout/header %>
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active"><%= title %></li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"><%= title %></h1>
+			</div>
+		</div><!--/.row-->
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Panel title</h3>
+			</div>
+			<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<form action="" method="GET" class="form-inline" role="form">
+								<div class="form-group">
+									<label class="sr-only" for="">label</label>
+									<input type="email" class="form-control" id="" placeholder="Input field">
+								</div>
+								<button type="buton" class="btn btn-primary btn-lg">Search</button>
+							</form>
+						</div>
+						<div class="col-sm-6">
+							<a href="/create-category"><button type="button" class="btn btn-primary pull-right btn-lg">Create</button></a>
+						</div>
+					</div>
+			</div>
+			
+		</div>
+		
+	</div>	
+<% include ../Layout/footer %>

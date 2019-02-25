@@ -1,0 +1,93 @@
+<% include ../Layout/header %>
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active"><%= title %></li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"><%= title %></h1>
+			</div>
+		</div><!--/.row-->
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Panel title</h3>
+			</div>
+			<div class="panel-body">
+					
+				<form action="/create-product" role="form" method="POST" enctype="multipart/form-data">
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1"> Category</label>
+					  	
+							<select name="category_name" class="form-control" style="border: 1px solid black;"required="required">
+						
+						  		<% category.forEach(cat=>{  %>
+										<option value="<%= cat._id %>"> <%= cat.name %></option>
+								<%	}) %>
+							</select>
+					   
+					</div>
+					  <input type="hidden"  class="form-control" value="<%= infoAdmin.name %>" name="author" style="border: 1px solid black;" >
+					<div class="form-group">
+					    <label for="exampleInputEmail1"> Product Name</label>
+					    <input type="text" class="form-control" name="nameProduct" style="border: 1px solid black;" placeholder="Category">
+					 	 <% if(typeof errValidateName !== 'undefined'){ %>
+							<div class="help-block" style="color: red"><%= errValidateName %></div>
+						<%	} %>
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Product Price</label>
+					    <input type="text" class="form-control" name="price" style="border: 1px solid black;" placeholder="Price">
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Product Description</label>
+					  <textarea class="form-control" rows="3" name="description" style="border: 1px solid black;" required="required"></textarea>
+					    
+					</div>
+		
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Product Images</label>
+						<input type="file" name="image">
+					    
+					 
+					</div>
+
+					<div class="form-group">
+					    <label for="exampleInputEmail1">Product Status</label>
+					    <select name="status" id="input" class="form-control" required="required">
+					    	<option value="0">Show</option>
+					    	<option value="1">Hidden</option>
+					    </select>
+					    
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputEmail1">Create Date Current </label><br>
+						   <select name="day" id="input"  style="font-size: 13px;height: 46px;padding: 5px;width: 150px;border: 1px solid black;" required="required">
+						   		<option value="<%= day %>"><%= day %></option>
+						   	</select>	
+						   	<select name="month" id="input" style="font-size: 13px;height: 46px;padding: 5px;width: 150px;border: 1px solid black;" required="required">
+						   		<option value="<%= month %>"><%= month %></option>
+						   	</select>	
+						   	 <select name="year" id="input"  style="font-size: 13px;height: 46px;padding: 5px;width: 150px;border: 1px solid black;" required="required">
+						   		<option value="<%= year %>"><%= year %></option>
+						   	</select>	
+					</div>
+					  <button type="submit" class="btn btn-primary btn-lg">Create</button>
+					
+				</form>
+			</div>
+			
+		</div>
+		
+	</div>	
+<% include ../Layout/footer %>

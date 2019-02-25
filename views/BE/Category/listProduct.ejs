@@ -1,0 +1,88 @@
+<% include ../Layout/header %>
+  <script type="text/javascript">
+    function xoa(mes) {
+      if(confirm(mes)==true){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  </script>
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="/">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active"><%= title %></li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"><%= title %></h1>
+			</div>
+		</div><!--/.row-->
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Panel title</h3>
+			</div>
+			<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<form action="/search-result" method="GET" class="form-inline"  role="form">
+								<div class="form-group">
+									<label class="sr-only" for="">label</label>
+									<input type="text" class="form-control" name="name" placeholder="Search">
+								</div>
+								<button type="buton" class="btn btn-primary btn-lg">Search</button>
+							</form>
+						</div>
+						<div class="col-sm-6">
+							<a href="/create-product"><button type="button" class="btn btn-primary pull-right btn-lg">Create Product</button></a>
+						</div>
+					</div>
+					<hr>
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>Danh mục</th>
+								<th>Name</th>
+								<th>Description</th>
+								<th>Price</th>
+								<th>Image</th>
+								<th>Status</th>
+								<th colspan= "3">Task</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% if(data) { %>
+								<% data.forEach(obj=>{ %>
+										<% obj.product.forEach(pro=>{ %>
+										<tr>
+											<td><%= obj.name  %></td>
+											<td><%= pro.nameProduct  %></td>
+											<td><%= pro.description  %></td>
+											<td><%= pro.price  %></td>
+											<td  align="center"><img src="http://localhost:3000/uploads/<%= pro.image %>"  rel="stylesheet" width="100px"></td>
+											<% if(pro.status == 0){ %>
+												<td align="center"><span class="label label-primary">Ẩn</span>
+											<%	}else{ %>
+												<td align="center"><span class="label label-success">Hiện</span>
+											<% } %>
+
+											<td align="center"><a href="/view/<%= pro.slug  %>/<%= obj._id %>"><span style="color: silver" class="glyphicon glyphicon-eye-open"></a></td>
+											<td align="center"><a href="/update-product/<%= pro.slug %>/<%= obj._id %>"><span style="color: black" class="glyphicon glyphicon-pencil"></span></a></td>
+											<td align="center"><a  onclick="return xoa('Bạn có muốn Xóa')" href="/delete-product/<%= pro.slug  %>/<%= obj._id %>"><span style="color: red" class=" glyphicon glyphicon-remove"></a></td>
+										</tr>
+										<%	}) %>
+								<%	}) %>
+							<%	}  %>
+						</tbody>
+					</table>
+			</div>
+			
+		</div>
+		
+	</div>	
+<% include ../Layout/footer %>
